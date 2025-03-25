@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Persistencia;
 
 /**
@@ -68,12 +64,11 @@ public class PersistenciaPacientes {
                     pacientes.add(paciente);
                 }
             }
-                }catch (IOException e) {
-                            System.err.println("Error al leer el archivo: " + e.getMessage());
-                }         
-                            return pacientes;
-    }       
-    
+        }catch (IOException e) {
+            System.err.println("Error al leer el archivo: " + e.getMessage());
+        }
+        return pacientes;
+    }
 
     public Paciente buscarPacientePorID(int id) throws Exception {
         return listarPacientes().stream().filter(p -> p.getId() == id).findFirst().orElse(null);

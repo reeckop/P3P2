@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Persistencia;
 
 /**
@@ -37,7 +33,7 @@ public class PersistenciaFachada implements IPersistenciaFachada {
 
     @Override
     public Paciente obtenerPacientePorId(int id) throws Exception {
-        return persistenciaPacientes.obtenerPacientePorId(id);
+        return persistenciaPacientes.buscarPacientePorID(id);
     }
 
     @Override
