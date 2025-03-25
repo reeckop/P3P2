@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Paciente;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license

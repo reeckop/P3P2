@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Paciente;
 
 import Entidades.Paciente;
 import Persistencia.PersistenciaFachada;

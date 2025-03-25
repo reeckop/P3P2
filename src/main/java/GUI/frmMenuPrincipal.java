@@ -1,5 +1,6 @@
 package GUI;
 
+import GUI.Paciente.AgregarPacientePanel;
 import Persistencia.IPersistenciaFachada;
 import java.awt.BorderLayout;
 import java.awt.Color;
