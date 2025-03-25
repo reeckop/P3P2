@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PersistenciaMedicos {
-    
+    private static final String ARCHIVO_MEDICOS = "medicos.csv";
     private List<Medico> medicos;
 
     public PersistenciaMedicos() {

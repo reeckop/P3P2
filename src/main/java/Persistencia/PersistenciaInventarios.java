@@ -13,10 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PersistenciaInventarios {
-    
+    private static final String ARCHIVO_INVENTARIOS = "inventarios.csv";
     private List<EquipoMedico> inventarios;
 
     public PersistenciaInventarios() {
+        
         this.inventarios = new ArrayList<>();
     }
 

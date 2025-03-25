@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PersistenciaPacientes {
-    private static final String ARCHIVO_PACIENTES = "pacientes.txt";
+    private static final String ARCHIVO_PACIENTES = "pacientes.csv";
     private List<Paciente> pacientes;
 
     public PersistenciaPacientes() {
