@@ -15,11 +15,8 @@ import java.util.stream.Collectors;
 
 public class PersistenciaPacientes {
     private static final String ARCHIVO_PACIENTES = "pacientes.txt";
-    private List<Paciente> pacientes;
 
-    public PersistenciaPacientes() {
-        this.pacientes = new ArrayList<>();
-    }
+    public PersistenciaPacientes() {}
 
     public void agregarPaciente(Paciente paciente) throws Exception {
         try {

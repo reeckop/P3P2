@@ -18,6 +18,8 @@ public interface IPersistenciaFachada {
     void agregarPaciente(Paciente paciente) throws Exception;
     Paciente obtenerPacientePorId(int id) throws Exception; 
     List<Paciente> listarPacientes() throws Exception;
+    void actualizarPaciente(Paciente paciente) throws Exception;
+    void eliminarPaciente(int id) throws Exception;
 
     // Médicos
     void agregarMedico(Medico medico) throws Exception;

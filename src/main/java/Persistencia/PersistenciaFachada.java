@@ -6,6 +6,8 @@ package Persistencia;
  */
 import Entidades.*;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PersistenciaFachada implements IPersistenciaFachada {
 
@@ -39,6 +41,18 @@ public class PersistenciaFachada implements IPersistenciaFachada {
     @Override
     public List<Paciente> listarPacientes() throws Exception {
         return persistenciaPacientes.listarPacientes();
+    }
+    
+    public void actualizarPaciente(Paciente paciente) throws Exception {
+        persistenciaPacientes.actualizarPaciente(paciente);
+    }
+    
+    public void eliminarPaciente(int id) {
+        try {
+            persistenciaPacientes.eliminarPaciente(id);
+        } catch (Exception ex) {
+            Logger.getLogger(PersistenciaFachada.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // =========================

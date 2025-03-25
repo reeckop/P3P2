@@ -11,6 +11,10 @@ public class Paciente {
     private int edad;
     private String direccion;
 
+    public Paciente(){
+        
+    }
+    
     public Paciente(int id, String nombre, int edad, String direccion) throws Exception {
         if (id <= 0) {
             throw new Exception("El ID del paciente debe ser positivo.");

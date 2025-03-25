@@ -4,7 +4,7 @@
 
 package com.mycompany.proyectoprogramacion3;
 
-import Menu.MenuPrincipal;
+import GUI.MenuPrincipal;
 import Persistencia.*;
 
 
