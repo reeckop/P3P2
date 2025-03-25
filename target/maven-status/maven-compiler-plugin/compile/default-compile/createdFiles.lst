@@ -1,0 +1,14 @@
+Persistencia\PersistenciaInventarios.class
+Persistencia\PersistenciaPacientes.class
+Entidades\Medico.class
+Persistencia\PersistenciaFachada.class
+Persistencia\PersistenciaMedicos.class
+Entidades\Especialidad.class
+Entidades\EquipoMedico.class
+Entidades\Paciente.class
+com\mycompany\proyectoprogramacion3\ProyectoProgramacion3.class
+Persistencia\IPersistenciaFachada.class
+Menu\MenuPrincipal.class
+Persistencia\PersistenciaConsultas.class
+Entidades\Consulta.class
+Persistencia\PersistenciaEspecialidades.class
