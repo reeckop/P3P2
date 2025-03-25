@@ -11,12 +11,11 @@ package Persistencia;
 import Entidades.Paciente;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class PersistenciaPacientes {
     private static final String ARCHIVO_PACIENTES = "pacientes.txt";
@@ -37,24 +36,47 @@ public class PersistenciaPacientes {
 
     public void guardarListaPacientes(List<Paciente> pacientes) {
         try {
-            List<String> lineas = pacientes.stream().map(Paciente::toString).collect(Collector.toList());
+            List<String> lineas = pacientes.stream().map(Paciente::toString).collect(Collectors.toList());
             Files.write(Paths.get(ARCHIVO_PACIENTES), lineas);
         } catch (IOException e) {
             System.err.println("Error al guardar el archivo: " + e.getMessage());
         }
     }
     
-    public Paciente obtenerPacientePorId(int id) throws Exception {
-        for (Paciente p : pacientes) {
-            if (p.getId() == id) {
-                return p;
-            }
-        }
-        throw new Exception("No se encontró un paciente con ID " + id);
+    public void actualizarPaciente(Paciente pacienteActualizado) throws Exception {
+        List<Paciente> pacientes = listarPacientes();
+        pacientes = pacientes.stream()
+                .map(p -> p.getId() == pacienteActualizado.getId() ? pacienteActualizado : p)
+                .collect(Collectors.toList());
+        guardarListaPacientes(pacientes);
     }
 
-    public List<Paciente> listarPacientes() {
-        return new ArrayList<>(pacientes);
+    public void eliminarPaciente(int id) throws Exception {
+        List<Paciente> pacientes = listarPacientes();
+        pacientes.removeIf(p -> p.getId() == id);
+        guardarListaPacientes(pacientes);
+    }
+    
+    public List<Paciente> listarPacientes() throws Exception {
+        List<Paciente> pacientes = new ArrayList<>();
+        try {
+            List<String> lineas = Files.readAllLines(Paths.get(ARCHIVO_PACIENTES));
+            for (String linea : lineas) {
+                Paciente paciente = new Paciente();
+                paciente.fromString(linea);
+                if (paciente != null) {
+                    pacientes.add(paciente);
+                }
+            }
+                }catch (IOException e) {
+                            System.err.println("Error al leer el archivo: " + e.getMessage());
+                }         
+                            return pacientes;
+    }       
+    
+
+    public Paciente buscarPacientePorID(int id) throws Exception {
+        return listarPacientes().stream().filter(p -> p.getId() == id).findFirst().orElse(null);
     }
 }
 
