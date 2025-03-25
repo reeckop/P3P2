@@ -12,7 +12,7 @@ public class Paciente {
     private String direccion;
 
     public Paciente(){
-        
+
     }
     
     public Paciente(int id, String nombre, int edad, String direccion) throws Exception {

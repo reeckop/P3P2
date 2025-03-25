@@ -14,7 +14,7 @@ import java.util.List;
 import java.time.LocalDate;
 
 public class PersistenciaConsultas {
-    
+    private static final String ARCHIVO_CONSULTAR = "consultas.csv";
     private List<Consulta> consultas;
 
     public PersistenciaConsultas() {
