@@ -1,6 +1,5 @@
 package GUI.Paciente;
 
-import Entidades.Paciente;
 import Persistencia.PersistenciaFachada;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +17,6 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
     public BuscarPacientePanel() {
         initComponents();
         this.persistencia = new PersistenciaFachada();
-
     }
 
     /**
@@ -94,22 +92,11 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        try {
         int id = Integer.parseInt(txtId.getText());
-        Object paciente = persistencia.obtenerPacientePorId(id);
         
-        if (paciente != null) {
-            jTextArea1.setText(paciente.toString());
-            System.out.println(paciente); // Keep this if you still want console output
-        } else {
-            jTextArea1.setText("No se encontró un paciente con el ID: " + id);
-        }
-        
-        } catch (NumberFormatException ex) {
-            jTextArea1.setText("Error: Por favor ingrese un número válido para el ID");
-            Logger.getLogger(BuscarPacientePanel.class.getName()).log(Level.WARNING, "ID inválido ingresado", ex);
+        try {
+            persistencia.obtenerPacientePorId(id);
         } catch (Exception ex) {
-            jTextArea1.setText("Error: " + ex.getMessage());
             Logger.getLogger(BuscarPacientePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
