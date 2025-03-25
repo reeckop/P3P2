@@ -4,8 +4,9 @@ C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Entidades\EquipoMedico.java
 C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Entidades\Especialidad.java
 C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Entidades\Medico.java
 C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Entidades\Paciente.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Menu\frmMenuPrincipal.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Menu\MenuPrincipal.java
+C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\AgregarPacientePanel.java
+C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\frmMenuPrincipal.java
+C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\MenuPrincipal.java
 C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Persistencia\IPersistenciaFachada.java
 C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Persistencia\PersistenciaConsultas.java
 C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Persistencia\PersistenciaEspecialidades.java

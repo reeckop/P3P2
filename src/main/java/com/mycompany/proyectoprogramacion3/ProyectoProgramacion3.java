@@ -4,7 +4,7 @@
 
 package com.mycompany.proyectoprogramacion3;
 
-import GUI.MenuPrincipal;
+import GUI.frmMenuPrincipal;
 import Persistencia.*;
 
 
@@ -16,7 +16,7 @@ public class ProyectoProgramacion3 {
 
     public static void main(String[] args) {
         IPersistenciaFachada persistencia = new PersistenciaFachada();
-        MenuPrincipal menu = new MenuPrincipal(persistencia);
-        menu.mostrar();
+        frmMenuPrincipal menu = new frmMenuPrincipal(persistencia);
+        menu.setVisible(true);
     }
 }

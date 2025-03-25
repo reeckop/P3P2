@@ -279,9 +279,9 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
     
     // Opciones del Menu Pacientes
     private void agregarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPacienteActionPerformed
-//        displayPanel.removeAll();
-//        AgregarPaciente menu = new AgregarPaciente();
-//        cambiarMenu(displayPanel, menu);
+        displayPanel.removeAll();
+        AgregarPacientePanel menu = new AgregarPacientePanel();
+        cambiarMenu(displayPanel, menu);
     }//GEN-LAST:event_agregarPacienteActionPerformed
 
     private void buscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPacienteActionPerformed
