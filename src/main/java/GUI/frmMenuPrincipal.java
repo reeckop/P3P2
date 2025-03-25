@@ -1,6 +1,9 @@
 package GUI;
 
 import GUI.Paciente.*;
+import GUI.Medicos.*;
+import GUI.EquipoMedico.*;
+import GUI.Consultas.*;
 import Persistencia.IPersistenciaFachada;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -14,12 +17,9 @@ import javax.swing.JPanel;
  */
 public class frmMenuPrincipal extends javax.swing.JFrame {
 
-    private IPersistenciaFachada persistencia;
-
     public frmMenuPrincipal(IPersistenciaFachada persistencia) {
         initComponents();
         aplicarTemaOscuro();
-        this.persistencia = persistencia;
         personalizarComponentes();
         displayPanel.setLayout(new BorderLayout());
     }
@@ -292,41 +292,41 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarPacienteActionPerformed
 
     private void actualizarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarPacienteActionPerformed
-//        displayPanel.removeAll();
-//        ActualizarPaciente menu = new ActualizarPaciente();
-//        cambiarMenu(displayPanel, menu);
+        displayPanel.removeAll();
+        ActualizarPaciente menu = new ActualizarPaciente();
+        cambiarMenu(displayPanel, menu);
     }//GEN-LAST:event_actualizarPacienteActionPerformed
 
     private void eliminarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPacienteActionPerformed
-//        displayPanel.removeAll();
-//        EliminarPacientePanel menu = new EliminarPacientePanel();
-//        cambiarMenu(displayPanel, menu);
+        displayPanel.removeAll();
+        EliminarPacientePanel menu = new EliminarPacientePanel();
+        cambiarMenu(displayPanel, menu);
     }//GEN-LAST:event_eliminarPacienteActionPerformed
 
     private void listaPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaPacientesActionPerformed
-//        displayPanel.removeAll();
-//        ListaPacientesPanel menu = new ListaPacientesPanel();
-//        cambiarMenu(displayPanel, menu);
+        displayPanel.removeAll();
+        ListaPacientesPanel menu = new ListaPacientesPanel();
+        cambiarMenu(displayPanel, menu);
         
     }//GEN-LAST:event_listaPacientesActionPerformed
     
     // Opciones del Menu de Doctores
     private void AgregarDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarDoctorActionPerformed
-//        displayPanel.removeAll();
-//        AgregarMedicoPanel menu = new AgregarMedicoPanel();
-//        cambiarMenu(displayPanel, menu);
+        displayPanel.removeAll();
+        AgregarMedicoPanel menu = new AgregarMedicoPanel();
+        cambiarMenu(displayPanel, menu);
     }//GEN-LAST:event_AgregarDoctorActionPerformed
 
     private void buscarDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarDoctorActionPerformed
-//        displayPanel.removeAll();
-//        BuscarMedico menu = new BuscarMedico();
-//        cambiarMenu(displayPanel, menu);
+        displayPanel.removeAll();
+        BuscarMedico menu = new BuscarMedico();
+        cambiarMenu(displayPanel, menu);
     }//GEN-LAST:event_buscarDoctorActionPerformed
 
     private void iventarearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iventarearActionPerformed
-//        displayPanel.removeAll();
-//        InventarearEquipoMedico menu = new InventarearEquipoMedico();
-//        cambiarMenu(displayPanel, menu);
+        displayPanel.removeAll();
+        InventarearEquipoMedico menu = new InventarearEquipoMedico();
+        cambiarMenu(displayPanel, menu);
     }//GEN-LAST:event_iventarearActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
@@ -334,39 +334,39 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void desinventarearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desinventarearActionPerformed
-//        displayPanel.removeAll();
-//        DesinventarearEquipoMedicoPanel menu = new DesinventarearEquipoMedicoPanel();
-//        cambiarMenu(displayPanel, menu);
+        displayPanel.removeAll();
+        DesinventarearEquipoMedicoPanel menu = new DesinventarearEquipoMedicoPanel();
+        cambiarMenu(displayPanel, menu);
     }//GEN-LAST:event_desinventarearActionPerformed
 
     private void consultaIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaIDActionPerformed
-//        displayPanel.removeAll();
-//        ConsultaPacientePanel menu = new ConsultaPacientePanel();
-//        cambiarMenu(displayPanel, menu);
+        displayPanel.removeAll();
+        ConsultaPacientePanel menu = new ConsultaPacientePanel();
+        cambiarMenu(displayPanel, menu);
     }//GEN-LAST:event_consultaIDActionPerformed
 
     private void consultaMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaMedicoActionPerformed
-//        displayPanel.removeAll();
-//        ConsultasMedicoPanel menu = new ConsultasMedicoPanel();
-//        cambiarMenu(displayPanel, menu);
+        displayPanel.removeAll();
+        ConsultasMedicoPanel menu = new ConsultasMedicoPanel();
+        cambiarMenu(displayPanel, menu);
     }//GEN-LAST:event_consultaMedicoActionPerformed
 
     private void agendarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendarConsultaActionPerformed
-//        displayPanel.removeAll();
-//        AgenderConsultaPanel menu = new AgenderConsultaPanel();
-//        cambiarMenu(displayPanel, menu);
+        displayPanel.removeAll();
+        AgenderConsultaPanel menu = new AgenderConsultaPanel();
+        cambiarMenu(displayPanel, menu);
     }//GEN-LAST:event_agendarConsultaActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-//        displayPanel.removeAll();
-//        InventarearEquipoMedico menu = new InventarearEquipoMedico();
-//        cambiarMenu(displayPanel, menu);
+        displayPanel.removeAll();
+        InventarearEquipoMedico menu = new InventarearEquipoMedico();
+        cambiarMenu(displayPanel, menu);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void cancelarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarConsultaActionPerformed
-//        displayPanel.removeAll();
-//        CancelarConsultaPanel menu = new CancelarConsultaPanel();
-//        cambiarMenu(displayPanel, menu);
+        displayPanel.removeAll();
+        CancelarConsultaPanel menu = new CancelarConsultaPanel();
+        cambiarMenu(displayPanel, menu);
     }//GEN-LAST:event_cancelarConsultaActionPerformed
  
     // Variables declaration - do not modify//GEN-BEGIN:variables

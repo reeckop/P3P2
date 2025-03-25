@@ -4,7 +4,17 @@ C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Entidades\EquipoMedico.java
 C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Entidades\Especialidad.java
 C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Entidades\Medico.java
 C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Entidades\Paciente.java
+C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Consultas\AgenderConsultaPanel.java
+C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Consultas\CancelarConsultaPanel.java
+C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Consultas\ConsultaPacientePanel.java
+C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Consultas\ConsultasMedicoPanel.java
+C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Consultas\ConsultasPeriodoPanel.java
+C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\EquipoMedico\ConsultasInventarioEquipoMedicoPanel.java
+C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\EquipoMedico\DesinventarearEquipoMedicoPanel.java
+C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\EquipoMedico\InventarearEquipoMedico.java
 C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\frmMenuPrincipal.java
+C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Medicos\AgregarMedicoPanel.java
+C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Medicos\BuscarMedico.java
 C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\MenuPrincipal.java
 C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Paciente\ActualizarPaciente.java
 C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Paciente\AgregarPacientePanel.java
