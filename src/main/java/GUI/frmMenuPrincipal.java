@@ -1,6 +1,6 @@
 package GUI;
 
-import GUI.Paciente.AgregarPacientePanel;
+import GUI.Paciente.*;
 import Persistencia.IPersistenciaFachada;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -286,9 +286,9 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_agregarPacienteActionPerformed
 
     private void buscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPacienteActionPerformed
-//        displayPanel.removeAll();
-//        BuscarPacientePanel menu = new BuscarPacientePanel();
-//        cambiarMenu(displayPanel, menu);
+        displayPanel.removeAll();
+        BuscarPacientePanel menu = new BuscarPacientePanel();
+        cambiarMenu(displayPanel, menu);
     }//GEN-LAST:event_buscarPacienteActionPerformed
 
     private void actualizarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarPacienteActionPerformed
