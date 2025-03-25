@@ -9,11 +9,17 @@ package Persistencia;
  * @author Enrique Osuna
  */
 import Entidades.Paciente;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
 
 public class PersistenciaPacientes {
-    
+    private static final String ARCHIVO_PACIENTES = "pacientes.txt";
     private List<Paciente> pacientes;
 
     public PersistenciaPacientes() {
@@ -21,16 +27,23 @@ public class PersistenciaPacientes {
     }
 
     public void agregarPaciente(Paciente paciente) throws Exception {
-        // Validar que el ID sea único
-        for (Paciente p : pacientes) {
-            if (p.getId() == paciente.getId()) {
-                throw new Exception("Ya existe un paciente con ID " + paciente.getId());
-            }
+        try {
+        Files.write(Paths.get(ARCHIVO_PACIENTES), (paciente.toString() + System.lineSeparator()).getBytes(),
+                StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo: " + e.getMessage());
         }
-        // Validar que los datos del paciente sean válidos (ya se validan en el constructor)
-        this.pacientes.add(paciente);
     }
 
+    public void guardarListaPacientes(List<Paciente> pacientes) {
+        try {
+            List<String> lineas = pacientes.stream().map(Paciente::toString).collect(Collector.toList());
+            Files.write(Paths.get(ARCHIVO_PACIENTES), lineas);
+        } catch (IOException e) {
+            System.err.println("Error al guardar el archivo: " + e.getMessage());
+        }
+    }
+    
     public Paciente obtenerPacientePorId(int id) throws Exception {
         for (Paciente p : pacientes) {
             if (p.getId() == id) {
