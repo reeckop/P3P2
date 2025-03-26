@@ -56,7 +56,7 @@ public class Paciente {
     }
 
     public Paciente fromString(String data) throws Exception {
-        String[] parts = data.split(", ");
+        String[] parts = data.split(",");
         if (parts.length != 4) return null;
         return new Paciente(Integer.parseInt(parts[0]), parts[1], Integer.parseInt(parts[2]), parts[3]);
     }
