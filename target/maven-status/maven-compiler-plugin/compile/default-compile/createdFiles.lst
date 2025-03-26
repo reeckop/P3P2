@@ -41,6 +41,7 @@ Entidades\Consulta.class
 GUI\frmMenuPrincipal$13.class
 GUI\frmMenuPrincipal$4.class
 GUI\Paciente\BuscarPacientePanel.class
+GUI\Paciente\ActualizarPaciente$1.class
 GUI\frmMenuPrincipal$11.class
 GUI\Consultas\ConsultasMedicoPanel.class
 Persistencia\PersistenciaMedicos.class

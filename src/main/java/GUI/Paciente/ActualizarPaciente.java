@@ -1,5 +1,15 @@
 package GUI.Paciente;
 
+import Entidades.Paciente;
+import Persistencia.IPersistenciaFachada;
+import Persistencia.PersistenciaFachada;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
@@ -7,17 +17,50 @@ package GUI.Paciente;
 
 /**
  *
- * @author Ricardo
+ * @author Ricardo & angelsn
  */
 public class ActualizarPaciente extends javax.swing.JPanel {
-
+    private IPersistenciaFachada persistencia;
+    private List<Paciente> pacientes;
     /**
      * Creates new form ActualizarPaciente
      */
     public ActualizarPaciente() {
         initComponents();
+        this.persistencia = new PersistenciaFachada();
+        try {
+            this.pacientes = persistencia.listarPacientes();
+        } catch (Exception ex) {
+            Logger.getLogger(ActualizarPaciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        cargarPacientes(pacientes, jTable1);
     }
+    
+    private void cargarPacientes(List<Paciente> pacientes, JTable table){
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0);
+        model.setColumnIdentifiers(new String[]{"ID","Nombre","Edad","Dirección"});
+        
+        for (Paciente p : pacientes) {
+            model.addRow(new Object[]{p.getId(), p.getNombre(), p.getEdad(), p.getDireccion()});
+            System.out.println("Paciente: "+p.getId()+", "+p.getNombre()+", "+p.getEdad()+", "+p.getDireccion());
+        }
+    }
+    
+    private void cargarPacientePorId(int id, JTable table){
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0);
+        model.setColumnIdentifiers(new String[]{"ID","Nombre","Edad","Dirección"});
 
+        try {
+            Paciente p = persistencia.obtenerPacientePorId(id);
+            model.addRow(new Object[]{p.getId(), p.getNombre(), p.getEdad(), p.getDireccion()});
+            System.out.println("Paciente: "+p.getId()+", "+p.getNombre()+", "+p.getEdad()+", "+p.getDireccion());
+        } catch (Exception e) {
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,18 +72,18 @@ public class ActualizarPaciente extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        idField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        idField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        nombreField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        edadField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        direccionField = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
@@ -50,16 +93,18 @@ public class ActualizarPaciente extends javax.swing.JPanel {
         jLabel2.setText("ID del paciente");
 
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -74,6 +119,11 @@ public class ActualizarPaciente extends javax.swing.JPanel {
 
         jButton2.setBackground(new java.awt.Color(102, 255, 102));
         jButton2.setText("Confirmar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -89,7 +139,7 @@ public class ActualizarPaciente extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton1)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -102,10 +152,10 @@ public class ActualizarPaciente extends javax.swing.JPanel {
                                     .addComponent(jLabel3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                                    .addComponent(jTextField3)
-                                    .addComponent(jTextField4)
-                                    .addComponent(jTextField5)))
+                                    .addComponent(idField2, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                                    .addComponent(nombreField)
+                                    .addComponent(edadField)
+                                    .addComponent(direccionField)))
                             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -117,25 +167,25 @@ public class ActualizarPaciente extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nombreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(edadField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(direccionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addComponent(jButton2)
                         .addGap(0, 37, Short.MAX_VALUE)))
@@ -143,8 +193,94 @@ public class ActualizarPaciente extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int id = Integer.parseInt(idField.getText());
+        cargarPacientePorId(id, jTable1);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+            try {
+            // Validación de campos vacíos
+            if (idField2.getText().trim().isEmpty() || 
+                edadField.getText().trim().isEmpty() ||
+                nombreField.getText().trim().isEmpty() ||
+                direccionField.getText().trim().isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, 
+                    "Todos los campos son obligatorios", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Conversión segura de números
+            int id, edad;
+            try {
+                id = Integer.parseInt(idField2.getText().trim());
+                edad = Integer.parseInt(edadField.getText().trim());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, 
+                    "ID y Edad deben ser valores numéricos", 
+                    "Error de formato", 
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Validación de valores positivos
+            if (id <= 0 || edad <= 0) {
+                JOptionPane.showMessageDialog(this, 
+                    "ID y Edad deben ser valores positivos", 
+                    "Error de validación", 
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            String nombre = nombreField.getText().trim();
+            String direccion = direccionField.getText().trim();
+
+            // Validación de longitud mínima
+            if (nombre.length() < 2 || direccion.length() < 5) {
+                JOptionPane.showMessageDialog(this, 
+                    "Nombre debe tener al menos 2 caracteres\nDirección al menos 5", 
+                    "Error de validación", 
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Creación y actualización del paciente
+            Paciente paciente = new Paciente(id, nombre, edad, direccion);
+            persistencia.actualizarPaciente(paciente);
+
+            // Feedback al usuario
+            JOptionPane.showMessageDialog(this, 
+                "Paciente actualizado correctamente", 
+                "Éxito", 
+                JOptionPane.INFORMATION_MESSAGE);
+
+            // Opcional: Limpiar campos después de actualizar
+            limpiarCampos();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, 
+                "Error al actualizar paciente: " + e.getMessage(), 
+                "Error crítico", 
+                JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace(); // Para depuración
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void limpiarCampos() {
+        idField2.setText("");
+        edadField.setText("");
+        nombreField.setText("");
+        direccionField.setText("");
+    }
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField direccionField;
+    private javax.swing.JTextField edadField;
+    private javax.swing.JTextField idField;
+    private javax.swing.JTextField idField2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -155,10 +291,6 @@ public class ActualizarPaciente extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField nombreField;
     // End of variables declaration//GEN-END:variables
 }

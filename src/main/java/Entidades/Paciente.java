@@ -55,11 +55,22 @@ public class Paciente {
         this.direccion = direccion;
     }
 
-    public Paciente fromString(String data) throws Exception {
-        String[] parts = data.split(",");
-        if (parts.length != 4) return null;
-        return new Paciente(Integer.parseInt(parts[0]), parts[1], Integer.parseInt(parts[2]), parts[3]);
+    public void fromString(String linea) {
+    String[] campos = linea.split("\\s*,\\s*");
+    
+    if (campos.length >= 4) {
+        try {
+            this.id = Integer.parseInt(campos[0]);
+            this.nombre = campos[1];
+            this.edad = Integer.parseInt(campos[2]);
+            this.direccion = campos[3];
+        } catch (NumberFormatException e) {
+            System.err.println("Error al convertir números en la línea: " + linea);
+        }
+    } else {
+        System.err.println("Línea no tiene suficientes campos: " + linea);
     }
+}
     
     @Override
     public String toString() {
