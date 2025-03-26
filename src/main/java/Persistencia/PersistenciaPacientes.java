@@ -56,11 +56,10 @@ public class PersistenciaPacientes {
         try {
             List<String> lineas = Files.readAllLines(Paths.get(ARCHIVO_PACIENTES));
             for (String linea : lineas) {
+                System.out.println("procesando: "+linea);
                 Paciente paciente = new Paciente();
                 paciente.fromString(linea);
-                if (paciente != null) {
-                    pacientes.add(paciente);
-                }
+                pacientes.add(paciente);
             }
         }catch (IOException e) {
             System.err.println("Error al leer el archivo: " + e.getMessage());
