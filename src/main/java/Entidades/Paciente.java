@@ -63,6 +63,6 @@ public class Paciente {
     
     @Override
     public String toString() {
-        return id + ", " + nombre + ", " + edad + ", " + direccion;
+        return id + "," + nombre + "," + edad + "," + direccion;
     }
 }
