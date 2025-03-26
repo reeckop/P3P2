@@ -6,6 +6,7 @@ Persistencia\PersistenciaFachada.class
 GUI\frmMenuPrincipal$3.class
 GUI\Consultas\ConsultaPacientePanel.class
 GUI\frmMenuPrincipal$7.class
+GUI\Paciente\EliminarPacientePanel$1.class
 GUI\MenuPrincipal.class
 Persistencia\PersistenciaEspecialidades.class
 GUI\frmMenuPrincipal$9.class
