@@ -51,6 +51,18 @@ public class Paciente {
         return direccion;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+    
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
