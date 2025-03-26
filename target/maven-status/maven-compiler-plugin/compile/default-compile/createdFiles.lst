@@ -24,6 +24,7 @@ GUI\Medicos\AgregarMedicoPanel$2.class
 GUI\Consultas\CancelarConsultaPanel.class
 Persistencia\PersistenciaInventarios.class
 GUI\frmMenuPrincipal$8.class
+GUI\Paciente\ActualizarPaciente$2.class
 GUI\Paciente\ActualizarPaciente.class
 GUI\frmMenuPrincipal$14.class
 GUI\Consultas\ConsultasPeriodoPanel.class
