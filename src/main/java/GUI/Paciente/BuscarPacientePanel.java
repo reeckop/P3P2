@@ -1,5 +1,6 @@
 package GUI.Paciente;
 
+import Entidades.Paciente;
 import Persistencia.PersistenciaFachada;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,7 +34,7 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
         txtId = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtPaciente = new javax.swing.JTextArea();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -52,10 +53,10 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtPaciente.setColumns(20);
+        txtPaciente.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        txtPaciente.setRows(5);
+        jScrollPane1.setViewportView(txtPaciente);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -95,7 +96,8 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
         int id = Integer.parseInt(txtId.getText());
         
         try {
-            persistencia.obtenerPacientePorId(id);
+            Paciente paciente = persistencia.obtenerPacientePorId(id);
+            txtPaciente.setText(paciente.toString());
         } catch (Exception ex) {
             Logger.getLogger(BuscarPacientePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -107,7 +109,7 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField txtId;
+    private javax.swing.JTextArea txtPaciente;
     // End of variables declaration//GEN-END:variables
 }
