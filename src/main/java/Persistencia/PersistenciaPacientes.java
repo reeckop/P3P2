@@ -11,6 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ *
+ * @author Enrique Osuna
+ */
 public class PersistenciaPacientes {
     private static final String ARCHIVO_PACIENTES = "pacientes.csv";
     private final Path archivoPacientesPath;
@@ -28,13 +32,12 @@ public class PersistenciaPacientes {
     }
 
     public void agregarPaciente(Paciente paciente) throws Exception {
-        // Verificar si ya existe un paciente con el mismo ID
+        // Verifica si ya existe un paciente con el mismo ID
         if (buscarPacientePorID(paciente.getId()) != null) {
             throw new Exception("Ya existe un paciente con el ID: " + paciente.getId());
         }
 
         try {
-            // Usar UTF-8 para manejar caracteres especiales
             Files.write(archivoPacientesPath, 
                 (paciente.toString() + System.lineSeparator()).getBytes(StandardCharsets.UTF_8),
                 StandardOpenOption.CREATE, 
@@ -47,7 +50,7 @@ public class PersistenciaPacientes {
 
     public void guardarListaPacientes(List<Paciente> pacientes) throws Exception {
         try {
-            // Convertir pacientes a líneas y guardar
+            // Convertierte pacientes a líneas y guarda
             List<String> lineas = pacientes.stream()
                 .map(Paciente::toString)
                 .collect(Collectors.toList());

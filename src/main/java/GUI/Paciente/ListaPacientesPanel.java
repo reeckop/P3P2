@@ -1,21 +1,34 @@
 package GUI.Paciente;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+import Entidades.Paciente;
+import Persistencia.IPersistenciaFachada;
+import Persistencia.PersistenciaFachada;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Ricardo
  */
 public class ListaPacientesPanel extends javax.swing.JPanel {
-
+    private IPersistenciaFachada persistencia;
+    private List<Paciente> pacientes;
+    
     /**
      * Creates new form ListaPacientesPanel
      */
     public ListaPacientesPanel() {
         initComponents();
+        this.persistencia = new PersistenciaFachada();
+        try {
+            this.pacientes = persistencia.listarPacientes();
+        } catch (Exception ex) {
+            Logger.getLogger(ActualizarPaciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        cargarPacientes(pacientes, jTable1);
     }
 
     /**
@@ -73,6 +86,16 @@ public class ListaPacientesPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+        private void cargarPacientes(List<Paciente> pacientes, JTable table){
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0);
+        model.setColumnIdentifiers(new String[]{"ID","Nombre","Edad","Dirección"});
+        
+        for (Paciente p : pacientes) {
+            model.addRow(new Object[]{p.getId(), p.getNombre(), p.getEdad(), p.getDireccion()});
+            System.out.println("Paciente: "+p.getId()+", "+p.getNombre()+", "+p.getEdad()+", "+p.getDireccion());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
