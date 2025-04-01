@@ -104,8 +104,8 @@ public class PersistenciaFachada implements IPersistenciaFachada {
     }
 
     @Override
-    public void actualizarCantidadEquipo(int id, int cantidad) throws Exception {
-        persistenciaInventarios.actualizarCantidadEquipo(id, cantidad);
+    public void actualizarCantidadEquipo(EquipoMedico equipoActualizado) throws Exception {
+        persistenciaInventarios.actualizarCantidadEquipo(equipoActualizado);
     }
 
     @Override
@@ -124,6 +124,11 @@ public class PersistenciaFachada implements IPersistenciaFachada {
     @Override
     public List<Consulta> listarConsultas() throws Exception {
         return persistenciaConsultas.listarConsultas();
+    }
+
+    @Override
+    public void actualizarCantidadEquipo(int id, int cantidad) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
 

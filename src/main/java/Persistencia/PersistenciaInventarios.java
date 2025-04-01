@@ -32,13 +32,13 @@ public class PersistenciaInventarios {
         }
     }
 
-    public void inventariar(EquipoMedico equipo) throws Exception {
+    public void agregarEquipoMedico(EquipoMedico equipo) throws Exception {
         EquipoMedico equipoExistente = buscar(equipo.getId());
         
         if (equipoExistente != null) {
             // Si existe, actualizamos la cantidad
             equipoExistente.setCantidad(equipoExistente.getCantidad() + equipo.getCantidad());
-            actualizarEquipo(equipoExistente);
+            actualizarCantidadEquipo(equipoExistente);
         } else {
             // No existe, lo agregamos al final
             String linea = equipo.getId() + "," + equipo.getNombre() + "," + equipo.getCantidad();
@@ -55,7 +55,7 @@ public class PersistenciaInventarios {
     }
 
     public EquipoMedico buscar(int id) throws Exception {
-        return listarEquipos().stream()
+        return listarEquiposMedicos().stream()
             .filter(e -> e.getId() == id)
             .findFirst()
             .orElse(null);
@@ -73,11 +73,11 @@ public class PersistenciaInventarios {
         }
         
         equipo.setCantidad(equipo.getCantidad() - cantidad);
-        actualizarEquipo(equipo);
+        actualizarCantidadEquipo(equipo);
     }
 
-    private void actualizarEquipo(EquipoMedico equipoActualizado) throws Exception {
-        List<EquipoMedico> equipos = listarEquipos();
+    private void actualizarCantidadEquipo(EquipoMedico equipoActualizado) throws Exception {
+        List<EquipoMedico> equipos = listarEquiposMedicos();
         
         boolean encontrado = false;
         for (int i = 0; i < equipos.size(); i++) {
@@ -112,7 +112,7 @@ public class PersistenciaInventarios {
         }
     }
 
-    public List<EquipoMedico> listarEquipos() throws Exception {
+    public List<EquipoMedico> listarEquiposMedicos() throws Exception {
         List<EquipoMedico> equipos = new ArrayList<>();
         
         try {
@@ -151,12 +151,12 @@ public class PersistenciaInventarios {
     }
 
     public List<EquipoMedico> buscarPorNombre(String nombre) throws Exception {
-        return listarEquipos().stream()
+        return listarEquiposMedicos().stream()
             .filter(e -> e.getNombre().toLowerCase().contains(nombre.toLowerCase()))
             .collect(Collectors.toList());
     }
     
     public int contarEquipos() throws Exception {
-        return listarEquipos().size();
+        return listarEquiposMedicos().size();
     }
 }

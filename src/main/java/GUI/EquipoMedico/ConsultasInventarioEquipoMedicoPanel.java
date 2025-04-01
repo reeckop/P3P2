@@ -1,20 +1,69 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package GUI.EquipoMedico;
+
+import Persistencia.PersistenciaFachada;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author pausa
+ * @author Ricardo
  */
 public class ConsultasInventarioEquipoMedicoPanel extends javax.swing.JPanel {
+    private PersistenciaFachada persistencia;
 
     /**
      * Creates new form ConsultasInventarioEquipoMedicoPanel
      */
     public ConsultasInventarioEquipoMedicoPanel() {
         initComponents();
+        this.persistencia = new PersistenciaFachada();
+    }
+    
+    private void inicializarTabla() {
+        String[] columnNames = {"ID", "Nombre", "Cantidad"};
+        modeloTabla = new DefaultTableModel(columnNames, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que la tabla no sea editable
+            }
+        };
+        modeloTabla.setModel(modeloTabla);
+    }
+
+    /**
+     * Carga los datos de equipos médicos del archivo CSV a la tabla
+     */
+    public void cargarDatosEquipoMedico() {
+        // Limpiar la tabla antes de cargar nuevos datos
+        modeloTabla.setRowCount(0);
+
+        try {
+            // Obtener todos los equipos médicos utilizando la clase de persistencia
+            List<EquipoMedico> equipos = persistencia.listarEquiposMedicos();
+
+            // Agregar cada equipo médico como una fila en la tabla
+            for (EquipoMedico equipo : equipos) {
+                Object[] fila = {
+                    equipo.getId(),
+                    equipo.getNombre(),
+                    equipo.getCantidad()
+                };
+                modeloTabla.addRow(fila);
+            }
+
+            if (equipos.isEmpty()) {
+                JOptionPane.showMessageDialog(this,
+                        "No hay equipos médicos registrados en el inventario.",
+                        "Inventario vacío",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                    "Error al cargar el inventario de equipos médicos: " + e.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -28,13 +77,13 @@ public class ConsultasInventarioEquipoMedicoPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        modeloTabla = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Equipo Medico Inventario");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        modeloTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -45,7 +94,7 @@ public class ConsultasInventarioEquipoMedicoPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(modeloTabla);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -74,6 +123,6 @@ public class ConsultasInventarioEquipoMedicoPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable modeloTabla;
     // End of variables declaration//GEN-END:variables
 }
