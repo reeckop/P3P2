@@ -32,6 +32,4 @@ public class Especialidad {
     public String toString() {
         return "id: " + id + ", nombre: " + nombre;
     }
-    
-    
 }

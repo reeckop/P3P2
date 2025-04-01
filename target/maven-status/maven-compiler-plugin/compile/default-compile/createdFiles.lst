@@ -45,6 +45,7 @@ GUI\Paciente\BuscarPacientePanel.class
 GUI\Paciente\ActualizarPaciente$1.class
 GUI\frmMenuPrincipal$11.class
 GUI\Consultas\ConsultasMedicoPanel.class
+GUI\Medicos\BuscarMedico$1.class
 Persistencia\PersistenciaMedicos.class
 Entidades\EquipoMedico.class
 GUI\Paciente\AgregarPacientePanel.class

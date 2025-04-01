@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Entidades;
 
 /**
@@ -45,4 +41,25 @@ public class EquipoMedico {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+    
+    @Override
+    public String toString() {
+        return id + "," + nombre + "," + cantidad;
+    }
+
+    public void fromString(String data) throws Exception {
+        String[] partes = data.split(",");
+        if (partes.length != 3) {
+            throw new Exception("Formato incorrecto para EquipoMedico");
+        }
+
+        try {
+            this.id = Integer.parseInt(partes[0]);
+            this.nombre = partes[1];
+            this.cantidad = Integer.parseInt(partes[2]);
+        } catch (NumberFormatException e) {
+            throw new Exception("Error al convertir datos numéricos: " + e.getMessage());
+        }
+    }
+    
 }
