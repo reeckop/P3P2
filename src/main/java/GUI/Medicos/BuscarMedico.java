@@ -1,5 +1,10 @@
 package GUI.Medicos;
 
+import Entidades.Medico;
+import Persistencia.IPersistenciaFachada;
+import Persistencia.PersistenciaFachada;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
@@ -11,11 +16,13 @@ package GUI.Medicos;
  */
 public class BuscarMedico extends javax.swing.JPanel {
 
+    private IPersistenciaFachada persistencia;
     /**
      * Creates new form BuscarMedico
      */
     public BuscarMedico() {
         initComponents();
+        persistencia = new PersistenciaFachada();
     }
 
     /**
@@ -41,6 +48,11 @@ public class BuscarMedico extends javax.swing.JPanel {
         jLabel2.setText("INGRESAR ID");
 
         jButton1.setText("buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -84,6 +96,16 @@ public class BuscarMedico extends javax.swing.JPanel {
                     .addContainerGap(56, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int id = Integer.parseInt(jTextField1.getText());
+        try {
+            Medico medico = persistencia.obtenerMedicoPorId(id);
+            jTextArea1.append(medico.toString());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error: "+e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

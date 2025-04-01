@@ -40,4 +40,11 @@ public class Medico {
     public void setEspecialidad(Especialidad especialidad) {
         this.especialidad = especialidad;
     }
+
+    @Override
+    public String toString() {
+        return "id: "+id+", nombre: "+nombre+", especialidad: "+especialidad;
+    }
+    
+    
 }

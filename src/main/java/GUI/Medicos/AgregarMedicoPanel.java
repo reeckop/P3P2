@@ -1,16 +1,39 @@
 package GUI.Medicos;
 
+import Entidades.Especialidad;
+import Entidades.Medico;
+import Persistencia.IPersistenciaFachada;
+import Persistencia.PersistenciaFachada;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ricardo
  */
 public class AgregarMedicoPanel extends javax.swing.JPanel {
 
+    private IPersistenciaFachada persistencia;
+    private List<Especialidad> especialidades;
     /**
      * Creates new form AgregarDoctorPanel
      */
     public AgregarMedicoPanel() {
+        persistencia = new PersistenciaFachada();
         initComponents();
+        try {
+             especialidades = persistencia.listarEspecialidades();
+             for(Especialidad p : especialidades){
+                 String esp = p.getId()+". "+p.getNombre();
+                 EspecialidadesComboBox.addItem(esp);
+             }
+        } catch (Exception e) {
+        }
+    }
+
+    private int extraerNumeros(String texto) {
+        String numeros = texto.replaceAll("\\D+", ""); // Elimina todo lo que no sea dígito
+        return numeros.isEmpty() ? 0 : Integer.parseInt(numeros); // Manejo si no hay números
     }
 
     /**
@@ -29,8 +52,8 @@ public class AgregarMedicoPanel extends javax.swing.JPanel {
         txtID = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        txtEdad = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        EspecialidadesComboBox = new javax.swing.JComboBox<>();
 
         btnConfirmar.setBackground(new java.awt.Color(51, 255, 102));
         btnConfirmar.setText("CONFIRMAR");
@@ -56,7 +79,7 @@ public class AgregarMedicoPanel extends javax.swing.JPanel {
 
         jLabel3.setText("NOMBRE:");
 
-        jLabel4.setText("CANTIDAD:");
+        jLabel4.setText("ESPECIALIDAD:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -79,11 +102,11 @@ public class AgregarMedicoPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNombre)
-                            .addComponent(txtEdad)
                             .addComponent(txtID, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(EspecialidadesComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -101,8 +124,8 @@ public class AgregarMedicoPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(EspecialidadesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConfirmar)
@@ -112,24 +135,32 @@ public class AgregarMedicoPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-
+        int id = Integer.parseInt(txtID.getText());
+        String nombre = txtNombre.getText();
+        int especialidadId = extraerNumeros(EspecialidadesComboBox.getSelectedItem().toString());
+        try {
+            Especialidad especialidad = persistencia.obtenerEspecialidadPorId(especialidadId);
+            persistencia.agregarMedico(new Medico(id, nombre, especialidad));
+            JOptionPane.showMessageDialog(null, "el médico ha sido añadido con éxito!", "médico añadido!", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error: "+e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         txtID.setText("");
         txtNombre.setText("");
-        txtEdad.setText("");
     }//GEN-LAST:event_btnBorrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> EspecialidadesComboBox;
     private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables

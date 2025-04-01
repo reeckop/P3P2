@@ -1,30 +1,30 @@
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\com\mycompany\proyectoprogramacion3\ProyectoProgramacion3.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Entidades\Consulta.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Entidades\EquipoMedico.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Entidades\Especialidad.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Entidades\Medico.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Entidades\Paciente.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Consultas\AgenderConsultaPanel.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Consultas\CancelarConsultaPanel.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Consultas\ConsultaPacientePanel.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Consultas\ConsultasMedicoPanel.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Consultas\ConsultasPeriodoPanel.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\EquipoMedico\ConsultasInventarioEquipoMedicoPanel.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\EquipoMedico\DesinventarearEquipoMedicoPanel.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\EquipoMedico\InventarearEquipoMedico.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\frmMenuPrincipal.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Medicos\AgregarMedicoPanel.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Medicos\BuscarMedico.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\MenuPrincipal.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Paciente\ActualizarPaciente.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Paciente\AgregarPacientePanel.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Paciente\BuscarPacientePanel.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Paciente\EliminarPacientePanel.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\GUI\Paciente\ListaPacientesPanel.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Persistencia\IPersistenciaFachada.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Persistencia\PersistenciaConsultas.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Persistencia\PersistenciaEspecialidades.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Persistencia\PersistenciaFachada.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Persistencia\PersistenciaInventarios.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Persistencia\PersistenciaMedicos.java
-C:\Users\Ricardo\Documents\GitHub\P3P2\src\main\java\Persistencia\PersistenciaPacientes.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\GUI\MenuPrincipal.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\GUI\Consultas\ConsultaPacientePanel.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\GUI\Medicos\BuscarMedico.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\GUI\Paciente\BuscarPacientePanel.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\Entidades\Especialidad.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\GUI\EquipoMedico\ConsultasInventarioEquipoMedicoPanel.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\GUI\frmMenuPrincipal.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\GUI\Consultas\ConsultasPeriodoPanel.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\Entidades\Medico.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\GUI\Paciente\EliminarPacientePanel.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\Persistencia\PersistenciaConsultas.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\Persistencia\PersistenciaEspecialidades.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\Persistencia\PersistenciaInventarios.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\Entidades\EquipoMedico.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\GUI\Paciente\AgregarPacientePanel.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\GUI\Consultas\ConsultasMedicoPanel.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\Entidades\Paciente.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\Persistencia\IPersistenciaFachada.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\GUI\Medicos\AgregarMedicoPanel.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\Entidades\Consulta.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\GUI\Paciente\ListaPacientesPanel.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\GUI\EquipoMedico\InventarearEquipoMedico.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\GUI\Consultas\AgenderConsultaPanel.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\GUI\EquipoMedico\DesinventarearEquipoMedicoPanel.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\Persistencia\PersistenciaFachada.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\Persistencia\PersistenciaMedicos.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\Persistencia\PersistenciaPacientes.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\GUI\Paciente\ActualizarPaciente.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\GUI\Consultas\CancelarConsultaPanel.java
+D:\#DOCUMENTOS\UNIVERSIDAD\PROGRA III\P3P2\src\main\java\com\mycompany\proyectoprogramacion3\ProyectoProgramacion3.java
