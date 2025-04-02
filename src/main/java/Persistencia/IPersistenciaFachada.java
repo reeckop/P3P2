@@ -32,6 +32,7 @@ public interface IPersistenciaFachada {
     List<Especialidad> listarEspecialidades() throws Exception;
 
     // Equipos Médicos
+    public void actualizarCantidadEquipo(EquipoMedico equipoActualizado) throws Exception;
     void agregarEquipoMedico(EquipoMedico equipo) throws Exception;
     void actualizarCantidadEquipo(int id, int cantidad) throws Exception;
     List<EquipoMedico> listarEquiposMedicos() throws Exception;
@@ -39,7 +40,9 @@ public interface IPersistenciaFachada {
     // Consultas
     void programarConsulta(Consulta consulta) throws Exception;
     List<Consulta> listarConsultas() throws Exception;
-
+    public boolean cancelarConsultaPorId(int id);
+    public Medico obtenerConsultaPorIdMedico(int id);
+    public Paciente obtenerConsultaPorIdPaciente(int id);
 }
 
 

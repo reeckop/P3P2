@@ -1,5 +1,8 @@
 package GUI.Consultas;
 
+import Persistencia.IPersistenciaFachada;
+import Persistencia.PersistenciaFachada;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
@@ -11,11 +14,13 @@ package GUI.Consultas;
  */
 public class ConsultasMedicoPanel extends javax.swing.JPanel {
 
+    private IPersistenciaFachada persistencia;
     /**
      * Creates new form ConsultasMedicoPanel
      */
     public ConsultasMedicoPanel() {
         initComponents();
+        persistencia = new PersistenciaFachada();
     }
 
     /**
@@ -41,6 +46,11 @@ public class ConsultasMedicoPanel extends javax.swing.JPanel {
         jLabel2.setText("ID del Medico");
 
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,6 +98,11 @@ public class ConsultasMedicoPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int idMedico = Integer.parseInt(jTextField1.getText());
+        persistencia.obtenerConsultaPorIdMedico(idMedico);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

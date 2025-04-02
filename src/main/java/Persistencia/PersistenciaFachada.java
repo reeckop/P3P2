@@ -127,6 +127,21 @@ public class PersistenciaFachada implements IPersistenciaFachada {
     }
 
     @Override
+    public boolean cancelarConsultaPorId(int id) {
+        return persistenciaConsultas.cancelarConsultaPorId(id);
+    }
+    
+    @Override
+    public Medico obtenerConsultaPorIdMedico(int id) {
+        return persistenciaConsultas.obtenerConsultaPorIdMedico(id);
+    }
+    
+    @Override
+    public Paciente obtenerConsultaPorIdPaciente(int id) {
+        return persistenciaConsultas.obtenerConsultaPorIdPaciente(id);
+    }
+    
+    @Override
     public void actualizarCantidadEquipo(int id, int cantidad) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

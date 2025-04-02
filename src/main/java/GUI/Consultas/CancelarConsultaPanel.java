@@ -4,14 +4,21 @@
  */
 package GUI.Consultas;
 
+import Persistencia.IPersistenciaFachada;
+import Persistencia.PersistenciaFachada;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ricardo
  */
 public class CancelarConsultaPanel extends javax.swing.JPanel {
 
+    private IPersistenciaFachada persistencia;
+    
     public CancelarConsultaPanel() {
         initComponents();
+        persistencia = new PersistenciaFachada();
     }
 
     /**
@@ -38,6 +45,11 @@ public class CancelarConsultaPanel extends javax.swing.JPanel {
 
         jButton1.setBackground(new java.awt.Color(255, 0, 0));
         jButton1.setText("Cancelar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,6 +96,30 @@ public class CancelarConsultaPanel extends javax.swing.JPanel {
                 .addGap(31, 31, 31))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    // método que cancela una consulta por id
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            String input = jTextField1.getText().trim();
+            if (input.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, ingrese un ID de consulta.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            int idConsulta = Integer.parseInt(input);
+            boolean cancelada = persistencia.cancelarConsultaPorId(idConsulta);
+
+            if (cancelada) {
+                JOptionPane.showMessageDialog(this, "Consulta cancelada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontró una consulta con el ID especificado.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El ID debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocurrió un error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

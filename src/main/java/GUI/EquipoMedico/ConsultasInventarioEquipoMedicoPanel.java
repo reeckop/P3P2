@@ -1,8 +1,10 @@
 package GUI.EquipoMedico;
 
+import Entidades.EquipoMedico;
 import Persistencia.PersistenciaFachada;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *

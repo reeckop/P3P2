@@ -76,7 +76,7 @@ public class PersistenciaInventarios {
         actualizarCantidadEquipo(equipo);
     }
 
-    private void actualizarCantidadEquipo(EquipoMedico equipoActualizado) throws Exception {
+    public void actualizarCantidadEquipo(EquipoMedico equipoActualizado) throws Exception {
         List<EquipoMedico> equipos = listarEquiposMedicos();
         
         boolean encontrado = false;
