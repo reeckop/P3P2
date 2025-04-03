@@ -40,9 +40,9 @@ public interface IPersistenciaFachada {
     // Consultas
     void programarConsulta(Consulta consulta) throws Exception;
     List<Consulta> listarConsultas() throws Exception;
-    public boolean cancelarConsultaPorId(int id);
-    public Medico obtenerConsultaPorIdMedico(int id);
-    public Paciente obtenerConsultaPorIdPaciente(int id);
+    public boolean cancelarConsultaPorId(int id) throws Exception;
+    public Consulta obtenerConsultaPorIdMedico(int id) throws Exception;
+    public Consulta obtenerConsultaPorIdPaciente(int id) throws Exception;
 }
 
 

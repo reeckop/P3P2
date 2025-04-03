@@ -85,10 +85,10 @@ public class PersistenciaFachada implements IPersistenciaFachada {
         persistenciaEspecialidades.agregarEspecialidad(especialidad);
     }
 
-    @Override
-    public Especialidad obtenerEspecialidadPorId(int id) throws Exception {
-        return persistenciaEspecialidades.obtenerEspecialidadPorId(id);
-    }
+//    @Override
+//    public Especialidad obtenerEspecialidadPorId(int id) throws Exception {
+//        return persistenciaEspecialidades.obtenerEspecialidadPorId(id);
+//    }
 
     @Override
     public List<Especialidad> listarEspecialidades() throws Exception {
@@ -126,21 +126,42 @@ public class PersistenciaFachada implements IPersistenciaFachada {
         return persistenciaConsultas.listarConsultas();
     }
 
+//    @Override
+//    public boolean cancelarConsultaPorId(int id) {
+//        return persistenciaConsultas.cancelarConsultaPorId(id);
+//    }
+    
+//    @Override
+//    public Medico obtenerConsultaPorIdMedico(int id) {
+//        return persistenciaConsultas.obtenerConsultaPorIdMedico(id);
+//    }
+    
+//    @Override
+//    public Paciente obtenerConsultaPorIdPaciente(int id) {
+//        return persistenciaConsultas.obtenerConsultaPorIdPaciente(id);
+//    }
+    
+
     @Override
-    public boolean cancelarConsultaPorId(int id) {
+    public Especialidad obtenerEspecialidadPorId(int id) throws Exception {
+        return persistenciaEspecialidades.buscarEspecialidadPorId(id);
+    }
+
+    @Override
+    public boolean cancelarConsultaPorId(int id) throws Exception {
         return persistenciaConsultas.cancelarConsultaPorId(id);
     }
-    
+
     @Override
-    public Medico obtenerConsultaPorIdMedico(int id) {
+    public Consulta obtenerConsultaPorIdMedico(int id) throws Exception {
         return persistenciaConsultas.obtenerConsultaPorIdMedico(id);
     }
-    
+
     @Override
-    public Paciente obtenerConsultaPorIdPaciente(int id) {
-        return persistenciaConsultas.obtenerConsultaPorIdPaciente(id);
+    public Consulta obtenerConsultaPorIdPaciente(int id) throws Exception {
+        return persistenciaConsultas.buscarConsultaPorId(id);
     }
-    
+
     @Override
     public void actualizarCantidadEquipo(int id, int cantidad) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

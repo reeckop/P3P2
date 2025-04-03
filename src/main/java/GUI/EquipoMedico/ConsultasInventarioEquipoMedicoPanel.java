@@ -21,52 +21,52 @@ public class ConsultasInventarioEquipoMedicoPanel extends javax.swing.JPanel {
         this.persistencia = new PersistenciaFachada();
     }
     
-    private void inicializarTabla() {
-        String[] columnNames = {"ID", "Nombre", "Cantidad"};
-        modeloTabla = new DefaultTableModel(columnNames, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false; // Hacer que la tabla no sea editable
-            }
-        };
-        modeloTabla.setModel(modeloTabla);
-    }
-
-    /**
-     * Carga los datos de equipos médicos del archivo CSV a la tabla
-     */
-    public void cargarDatosEquipoMedico() {
-        // Limpiar la tabla antes de cargar nuevos datos
-        modeloTabla.setRowCount(0);
-
-        try {
-            // Obtener todos los equipos médicos utilizando la clase de persistencia
-            List<EquipoMedico> equipos = persistencia.listarEquiposMedicos();
-
-            // Agregar cada equipo médico como una fila en la tabla
-            for (EquipoMedico equipo : equipos) {
-                Object[] fila = {
-                    equipo.getId(),
-                    equipo.getNombre(),
-                    equipo.getCantidad()
-                };
-                modeloTabla.addRow(fila);
-            }
-
-            if (equipos.isEmpty()) {
-                JOptionPane.showMessageDialog(this,
-                        "No hay equipos médicos registrados en el inventario.",
-                        "Inventario vacío",
-                        JOptionPane.INFORMATION_MESSAGE);
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,
-                    "Error al cargar el inventario de equipos médicos: " + e.getMessage(),
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-    }
+//    private void inicializarTabla() {
+//        String[] columnNames = {"ID", "Nombre", "Cantidad"};
+//        modeloTabla = new DefaultTableModel(columnNames, 0) {
+//            @Override
+//            public boolean isCellEditable(int row, int column) {
+//                return false; // Hacer que la tabla no sea editable
+//            }
+//        };
+//        modeloTabla.setModel(modeloTabla);
+//    }
+//
+//    /**
+//     * Carga los datos de equipos médicos del archivo CSV a la tabla
+//     */
+//    public void cargarDatosEquipoMedico() {
+//        // Limpiar la tabla antes de cargar nuevos datos
+//        modeloTabla.setRowCount(0);
+//
+//        try {
+//            // Obtener todos los equipos médicos utilizando la clase de persistencia
+//            List<EquipoMedico> equipos = persistencia.listarEquiposMedicos();
+//
+//            // Agregar cada equipo médico como una fila en la tabla
+//            for (EquipoMedico equipo : equipos) {
+//                Object[] fila = {
+//                    equipo.getId(),
+//                    equipo.getNombre(),
+//                    equipo.getCantidad()
+//                };
+//                modeloTabla.addRow(fila);
+//            }
+//
+//            if (equipos.isEmpty()) {
+//                JOptionPane.showMessageDialog(this,
+//                        "No hay equipos médicos registrados en el inventario.",
+//                        "Inventario vacío",
+//                        JOptionPane.INFORMATION_MESSAGE);
+//            }
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this,
+//                    "Error al cargar el inventario de equipos médicos: " + e.getMessage(),
+//                    "Error",
+//                    JOptionPane.ERROR_MESSAGE);
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.

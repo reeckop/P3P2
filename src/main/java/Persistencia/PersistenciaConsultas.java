@@ -128,18 +128,16 @@ public class PersistenciaConsultas {
             .orElse(null);
     }
     
-    public Medico obtenerConsultaPorIdMedico(int id) throws Exception {
+    public Consulta obtenerConsultaPorIdMedico(int id) throws Exception {
         return listarConsultas().stream()
             .filter(c -> c.getMedico().getId() == id)
-            .map(Consulta::getMedico)
             .findFirst()
             .orElse(null);
     }
     
-    public Paciente obtenerConsultaPorIdPaciente(int id) throws Exception {
+    public Consulta obtenerConsultaPorIdPaciente(int id) throws Exception {
         return listarConsultas().stream()
             .filter(c -> c.getPaciente().getId() == id)
-            .map(Consulta::getPaciente)
             .findFirst()
             .orElse(null);
     }

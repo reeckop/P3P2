@@ -4,9 +4,15 @@
  */
 package GUI.Consultas;
 
+import Entidades.Consulta;
 import Persistencia.IPersistenciaFachada;
 import Persistencia.PersistenciaFachada;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +25,10 @@ public class CancelarConsultaPanel extends javax.swing.JPanel {
     public CancelarConsultaPanel() {
         initComponents();
         persistencia = new PersistenciaFachada();
+        try {
+            cargarConsultas(persistencia.listarConsultas(), jTable1);
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -118,9 +128,30 @@ public class CancelarConsultaPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "El ID debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ocurrió un error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            try {
+                cargarConsultas(persistencia.listarConsultas(), jTable1);
+            } catch (Exception ex) {
+                Logger.getLogger(CancelarConsultaPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void cargarConsultas(List<Consulta> consultas, JTable table){
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0);
+        model.setColumnIdentifiers(new String[]{"ID","Nombre Paciente","Nombre Medico","Fecha"});
+        
+        for (Consulta c : consultas) {
+            model.addRow(new Object[]{c.getId(), 
+                c.getPaciente().getNombre(), 
+                c.getMedico().getNombre(), 
+                c.getFecha()});
+            System.out.println("ID: "+c.getId()+
+                    "Nombre Paciente: "+c.getPaciente().getNombre()+
+                    c.getMedico().getNombre()+"Fecha: "+c.getFecha());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

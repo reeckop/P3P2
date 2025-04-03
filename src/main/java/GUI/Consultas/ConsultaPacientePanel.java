@@ -4,17 +4,35 @@
  */
 package GUI.Consultas;
 
+import Entidades.Consulta;
+import Persistencia.IPersistenciaFachada;
+import Persistencia.PersistenciaFachada;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Ricardo
  */
 public class ConsultaPacientePanel extends javax.swing.JPanel {
 
+    private IPersistenciaFachada persistencia;
+    
     /**
      * Creates new form ConsultaID
      */
     public ConsultaPacientePanel() {
         initComponents();
+        persistencia = new PersistenciaFachada();
+        try {
+            cargarConsultas(persistencia.listarConsultas(), jTable1);
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultaPacientePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -41,16 +59,18 @@ public class ConsultaPacientePanel extends javax.swing.JPanel {
 
         jButton1.setBackground(new java.awt.Color(153, 255, 153));
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -88,7 +108,111 @@ public class ConsultaPacientePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String idText = jTextField1.getText().trim();
+    
+        if (idText.isEmpty()) {
+            JOptionPane.showMessageDialog(this, 
+                "Por favor ingrese un ID de paciente", 
+                "Campo vacío", 
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
+        try {
+            int idPaciente = Integer.parseInt(idText);
+            cargarConsultaPacientePorID(idPaciente, jTable1);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, 
+                "El ID debe ser un número válido", 
+                "Error de formato", 
+                JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, 
+                "Error al cargar las consultas:\n" + ex.getMessage(), 
+                "Error del sistema", 
+                JOptionPane.ERROR_MESSAGE);
+            // Limpiar tabla en caso de error
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cargarConsultas(List<Consulta> consultas, JTable table){
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0);
+        model.setColumnIdentifiers(new String[]{"ID","Nombre Paciente","Nombre Medico","Fecha"});
+        
+        for (Consulta c : consultas) {
+            model.addRow(new Object[]{c.getId(), 
+                c.getPaciente().getNombre(), 
+                c.getMedico().getNombre(), 
+                c.getFecha()});
+            System.out.println("ID: "+c.getId()+
+                    "Nombre Paciente: "+c.getPaciente().getNombre()+
+                    c.getMedico().getNombre()+"Fecha: "+c.getFecha());
+        }
+    }
+
+    private void cargarConsultaPacientePorID(int id, JTable table) throws Exception{
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0);
+        model.setColumnIdentifiers(new String[]{"Campo", "Datos"});
+
+        try {
+            Consulta c = persistencia.obtenerConsultaPorIdPaciente(id);
+
+            if (c == null) {
+                JOptionPane.showMessageDialog(table, 
+                    "No se encontró consulta para el paciente con ID: " + id, 
+                    "Sin resultados", 
+                    JOptionPane.INFORMATION_MESSAGE);
+                model.addRow(new Object[]{"Información", "No se encontraron datos"});
+                return;
+            }
+
+            // Datos de la consulta
+            model.addRow(new Object[]{"ID Consulta", c.getId()});
+            model.addRow(new Object[]{"Fecha", c.getFecha()});
+
+            // Datos del paciente
+            if (c.getPaciente() != null) {
+                model.addRow(new Object[]{"ID Paciente", c.getPaciente().getId()});
+                model.addRow(new Object[]{"Nombre Paciente", c.getPaciente().getNombre()});
+                model.addRow(new Object[]{"Edad Paciente", c.getPaciente().getEdad()});
+                model.addRow(new Object[]{"Dirección Paciente", c.getPaciente().getDireccion()});
+            } else {
+                JOptionPane.showMessageDialog(table, 
+                    "Advertencia: No hay información del paciente asociada a esta consulta", 
+                    "Datos incompletos", 
+                    JOptionPane.WARNING_MESSAGE);
+            }
+
+            // Datos del médico
+            if (c.getMedico() != null) {
+                model.addRow(new Object[]{"ID Médico", c.getMedico().getId()});
+                model.addRow(new Object[]{"Nombre Médico", c.getMedico().getNombre()});
+                if (c.getMedico().getEspecialidad() != null) {
+                    model.addRow(new Object[]{"Especialidad", c.getMedico().getEspecialidad().getNombre()});
+                } else {
+                    model.addRow(new Object[]{"Especialidad", "No especificada"});
+                }
+            } else {
+                JOptionPane.showMessageDialog(table, 
+                    "Advertencia: No hay información del médico asociada a esta consulta", 
+                    "Datos incompletos", 
+                    JOptionPane.WARNING_MESSAGE);
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(table, 
+                "Error grave al cargar los datos:\n" + ex.getMessage(), 
+                "Error crítico", 
+                JOptionPane.ERROR_MESSAGE);
+            model.addRow(new Object[]{"Error", "No se pudieron cargar los datos"});
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
