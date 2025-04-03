@@ -44,7 +44,6 @@ public class Medico {
     @Override
     public String toString() {
         return "id: "+id+", nombre: "+nombre+", especialidad: "+especialidad;
-    }
-    
+    }  
     
 }
