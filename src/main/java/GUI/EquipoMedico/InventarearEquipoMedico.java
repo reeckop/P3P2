@@ -4,6 +4,7 @@ import Entidades.EquipoMedico;
 import Persistencia.PersistenciaFachada;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -119,6 +120,7 @@ public class InventarearEquipoMedico extends javax.swing.JPanel {
         
         try {
             persistencia.agregarEquipoMedico(new EquipoMedico(id, equipo, cantidad));
+            JOptionPane.showMessageDialog(null, "El equipo se anadio con exito", "Atencion", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
             Logger.getLogger(InventarearEquipoMedico.class.getName()).log(Level.SEVERE, null, ex);
         }

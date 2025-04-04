@@ -47,6 +47,7 @@ public class PersistenciaInventarios {
                     (linea + System.lineSeparator()).getBytes(StandardCharsets.UTF_8),
                     StandardOpenOption.CREATE, 
                     StandardOpenOption.APPEND);
+                System.out.println("Se agrego el equipo");
             } catch (IOException e) {
                 System.err.println("Error al escribir en el archivo: " + e.getMessage());
                 throw new Exception("No se pudo inventariar el equipo médico", e);
