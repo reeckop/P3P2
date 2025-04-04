@@ -2,7 +2,7 @@ package Entidades;
 
 /**
  *
- * @author Enrique Osuna
+ * @author Ricardo
  */
 public class Paciente {
     
@@ -79,11 +79,11 @@ public class Paciente {
         } catch (NumberFormatException e) {
             System.err.println("Error al convertir números en la línea: " + linea);
         }
-    } else {
-        System.err.println("Línea no tiene suficientes campos: " + linea);
+        } else {
+            System.err.println("Línea no tiene suficientes campos: " + linea);
+        }
     }
-}
-    
+       
     @Override
     public String toString() {
         return id + "," + nombre + "," + edad + "," + direccion;

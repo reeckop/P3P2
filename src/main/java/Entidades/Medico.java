@@ -2,7 +2,7 @@ package Entidades;
 
 /**
  *
- * @author Enrique Osuna
+ * @author Ricardo
  */
 public class Medico {
     
@@ -44,6 +44,5 @@ public class Medico {
     @Override
     public String toString() {
         return "id: "+id+", nombre: "+nombre+", especialidad: "+especialidad;
-    }  
-    
+    }     
 }
