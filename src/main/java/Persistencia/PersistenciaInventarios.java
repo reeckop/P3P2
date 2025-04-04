@@ -117,7 +117,7 @@ public class PersistenciaInventarios {
         List<EquipoMedico> equipos = new ArrayList<>();
         
         try {
-            // Verificar si el archivo existe
+            // Verifica si existe el archivo
             if (!Files.exists(archivoEquiposPath)) {
                 return equipos;
             }

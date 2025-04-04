@@ -50,7 +50,7 @@ public class EquipoMedico {
     public void fromString(String data) throws Exception {
         String[] partes = data.split(",");
         if (partes.length != 3) {
-            throw new Exception("Formato incorrecto para EquipoMedico");
+            throw new Exception("Formato incorrecto para el Equipo Medico");
         }
 
         try {
