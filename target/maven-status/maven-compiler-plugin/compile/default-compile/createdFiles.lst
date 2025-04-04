@@ -57,3 +57,4 @@ GUI\EquipoMedico\InventarearEquipoMedico.class
 GUI\EquipoMedico\ConsultasInventarioEquipoMedicoPanel.class
 GUI\frmMenuPrincipal$1.class
 GUI\Consultas\CancelarConsultaPanel$1.class
+GUI\EquipoMedico\DesinventarearEquipoMedicoPanel$1.class
