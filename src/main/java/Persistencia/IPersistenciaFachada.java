@@ -36,6 +36,7 @@ public interface IPersistenciaFachada {
     void agregarEquipoMedico(EquipoMedico equipo) throws Exception;
     void actualizarCantidadEquipo(int id, int cantidad) throws Exception;
     List<EquipoMedico> listarEquiposMedicos() throws Exception;
+    public EquipoMedico buscar(int id) throws Exception;
 
     // Consultas
     void programarConsulta(Consulta consulta) throws Exception;

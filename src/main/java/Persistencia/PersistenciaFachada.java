@@ -113,6 +113,11 @@ public class PersistenciaFachada implements IPersistenciaFachada {
         return persistenciaInventarios.listarEquiposMedicos();
     }
 
+    @Override
+    public EquipoMedico buscar(int id) throws Exception {
+        return persistenciaInventarios.buscar(id);
+    }
+    
     // =========================
     //      CONSULTAS
     // =========================
