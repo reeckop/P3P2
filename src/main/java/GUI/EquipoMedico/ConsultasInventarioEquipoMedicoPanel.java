@@ -1,9 +1,12 @@
 package GUI.EquipoMedico;
 
 import Entidades.EquipoMedico;
+import Persistencia.IPersistenciaFachada;
 import Persistencia.PersistenciaFachada;
 import java.util.List;
-import javax.swing.JOptionPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -11,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Ricardo
  */
 public class ConsultasInventarioEquipoMedicoPanel extends javax.swing.JPanel {
-    private PersistenciaFachada persistencia;
+    private IPersistenciaFachada persistencia;
 
     /**
      * Creates new form ConsultasInventarioEquipoMedicoPanel
@@ -19,6 +22,22 @@ public class ConsultasInventarioEquipoMedicoPanel extends javax.swing.JPanel {
     public ConsultasInventarioEquipoMedicoPanel() {
         initComponents();
         this.persistencia = new PersistenciaFachada();
+        try {
+            cargarInventario(persistencia.listarEquiposMedicos(), modeloTabla);
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultasInventarioEquipoMedicoPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void cargarInventario(List<EquipoMedico> equipos, JTable tabla){
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        model.setRowCount(0);
+        model.setColumnIdentifiers(new String[]{"ID","Nombre","Edad","Dirección"});
+        
+        for (EquipoMedico e : equipos) {
+            model.addRow(new Object[]{e.getId(), e.getNombre(), e.getCantidad()});
+            System.out.println(e.getId());
+        }
     }
     
 //    private void inicializarTabla() {
@@ -87,13 +106,10 @@ public class ConsultasInventarioEquipoMedicoPanel extends javax.swing.JPanel {
 
         modeloTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane2.setViewportView(modeloTabla);
